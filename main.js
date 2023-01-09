@@ -1,7 +1,7 @@
 import * as THREE from "./node_modules/three";
 import * as SVGSON from "./node_modules/svgson";
 import "./style.css";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "./node_modules/three/examples/jsm/controls/OrbitControls";
 
 //get a random number
 const getRandom = (min, max) => {
