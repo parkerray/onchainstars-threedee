@@ -1,7 +1,6 @@
-import * as THREE from "three";
-import * as SVGSON from "svgson";
+import * as THREE from "./node_modules/three";
+import * as SVGSON from "./node_modules/svgson";
 import "./style.css";
-import gsap from "gsap";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
 //get a random number
@@ -200,7 +199,4 @@ async function handleFunctions() {
     window.requestAnimationFrame(loop);
   };
   loop();
-
-  //timeline
-  const tl = gsap.timeline({ defaults: { duration: 1 } });
 }
