@@ -26,7 +26,7 @@ async function initialize() {
   if (address) {
     ownerInput.value = address;
   } else {
-    address = '0x0325b5Ba13C5283f2C5262983A64e963f5BDca4E';
+    address = '0x93da86E4231908179b738E88DD0510F7078a5Cac';
   }
   getSvgs(address)
 }
