@@ -14,7 +14,6 @@ function handleButton() {
   const url = new URL(window.location);
   url.searchParams.set('address',ownerInput.value)
   window.history.pushState({},'',url)
-  console.log(`button clicked for ${ownerInput.value}`)
   if (ownerInput.value) {
     getSvgs(ownerInput.value);
   } else {
