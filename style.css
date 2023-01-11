@@ -10,6 +10,7 @@ body, html {
   align-items: center;
   justify-content: center;
   touch-action: none;
+  background-color: black;
 }
 
 .button {
