@@ -12,6 +12,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "@ensdomains/ensjs": "^3.0.0-alpha.39",
     "gsap": "^3.11.4",
     "svgson": "^5.2.1",
     "three": "^0.148.0"

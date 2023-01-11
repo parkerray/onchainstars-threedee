@@ -2,6 +2,7 @@ import * as THREE from "three";
 import * as SVGSON from "svgson";
 import "./style.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { ENS } from '@ensdomains/ensjs'
 
 const ownerInput = document.querySelector('.owner-input');
 const refreshButton = document.querySelector('.button');
@@ -46,6 +47,31 @@ const getPosition = (token, i, min, max) => {
   seed = seed * (max - min) + min + 1;
   return seed;
 };
+
+async function getTopHolders() {
+
+  let holders = [];
+  const response = await fetch(`https://api.onchainstars.com/api:public/top-holders`, {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+  });
+  const data = await response.json();
+
+  const items = data.map(item => item);
+
+  items.forEach(item => {
+    let address = item.constellations_owner;
+    let holder = {
+      "address": address,
+      "label": address.substring(0, 6) + "..." + address.substring(address.length - 4),
+      "tokenCount": item.tokens
+    }
+    holders.push(holder)
+  });
+  return holders;
+}
+
+console.log(await getTopHolders())
 
 async function getImages(address) {
   let svgs = [];

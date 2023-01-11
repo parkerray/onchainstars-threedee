@@ -11,6 +11,7 @@ body, html {
   justify-content: center;
   touch-action: none;
   background-color: black;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .button {
@@ -55,4 +56,27 @@ body, html {
 .owner-input:focus {
   opacity: 100%;
   outline: 0;
+}
+
+.top-wrapper {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 900;
+  padding: 12px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.top-wrapper h2 {
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+li {
+  list-style: none;
+  font-size: 14px;
+  margin-top: 4px;
+  padding: 2px;
+  cursor: pointer;
 }
