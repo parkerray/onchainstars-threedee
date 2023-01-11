@@ -4,9 +4,23 @@
   box-sizing: border-box;
 }
 
-body,
-html {
+body, html {
   overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  margin: 0 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  outline: none;
+  border: none;
+  border-radius: 2px 10px 10px 2px;
+  background-color: rgb(0, 86, 235);
+  color: white;
+  cursor: pointer;
 }
 
 .webgl {
@@ -14,4 +28,28 @@ html {
   top: 0;
   left: 0;
   z-index: 1;
+}
+
+.owner-wrapper {
+  position: relative;
+  z-index: 999;
+  margin: 32px auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.owner-input {
+  min-width: 380px;
+  max-width: 100%;
+  background-color: white;
+  opacity: 50%;
+  border: none;
+  border-radius: 10px 2px 2px 10px;
+  text-align: center;
+  padding: 10px 22px;
+}
+
+.owner-input:focus {
+  opacity: 100%;
+  outline: 0;
 }

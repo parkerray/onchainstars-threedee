@@ -3,12 +3,18 @@
 
 <head>
   <meta charset="UTF-8" />
+  <link rel="stylesheet" type="text/css" href="/styles.css" />
   <link rel="icon" type="image/png" href="./fav.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>onchainstars - threedee</title>
 </head>
 
 <body>
+  <div class="owner-wrapper">
+    <input id="owner-input" class="owner-input" type="text" placeholder="enter wallet address (0x...)"
+      value="0x0325b5ba13c5283f2c5262983a64e963f5bdca4e">
+    <button class="button">refresh</button>
+  </div>
   <canvas class="webgl"></canvas>
   <script type="module" src="./main.js"></script>
 </body>
