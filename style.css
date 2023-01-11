@@ -36,6 +36,7 @@ body, html {
   margin: 32px auto;
   display: flex;
   flex-direction: row;
+  max-width: 95%;
 }
 
 .owner-input {
