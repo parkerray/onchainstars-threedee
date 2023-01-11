@@ -2,7 +2,7 @@ import * as THREE from "three";
 import * as SVGSON from "svgson";
 import "./style.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { ENS } from '@ensdomains/ensjs'
+//import { ENS } from '@ensdomains/ensjs'
 
 const ownerInput = document.querySelector('.owner-input');
 const refreshButton = document.querySelector('.button');
