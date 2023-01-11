@@ -22,32 +22,6 @@ function handleButton() {
   }
 }
 
-async function initialize() {
-  let address = urlParams.get('address');
-  if (address) {
-    ownerInput.value = address;
-  } else {
-    address = '0x93da86E4231908179b738E88DD0510F7078a5Cac';
-  }
-  getSvgs(address)
-}
-
-initialize();
-
-const getPosition = (token, i, min, max) => {
-  let seed = token * i;
-  seed = seed & 0xffffffff;
-  seed = (seed + 0x7ed55d16 + (seed << 12)) & 0xffffffff;
-  seed = (seed ^ 0xc761c23c ^ (seed >>> 19)) & 0xffffffff;
-  seed = (seed + 0x165667b1 + (seed << 5)) & 0xffffffff;
-  seed = ((seed + 0xd3a2646c) ^ (seed << 9)) & 0xffffffff;
-  seed = (seed + 0xfd7046c5 + (seed << 3)) & 0xffffffff;
-  seed = (seed ^ 0xb55a4f09 ^ (seed >>> 16)) & 0xffffffff;
-  seed = (seed & 0xfffffff) / 0x10000000;
-  seed = seed * (max - min) + min + 1;
-  return seed;
-};
-
 async function getTopHolders() {
 
   let holders = [];
@@ -71,7 +45,33 @@ async function getTopHolders() {
   return holders;
 }
 
-console.log(getTopHolders())
+async function initialize() {
+  let address = urlParams.get('address');
+  if (address) {
+    ownerInput.value = address;
+  } else {
+    address = '0x93da86E4231908179b738E88DD0510F7078a5Cac';
+  }
+  getSvgs(address)
+  const holders = await getTopHolders();
+  console.log(holders)
+}
+
+initialize();
+
+const getPosition = (token, i, min, max) => {
+  let seed = token * i;
+  seed = seed & 0xffffffff;
+  seed = (seed + 0x7ed55d16 + (seed << 12)) & 0xffffffff;
+  seed = (seed ^ 0xc761c23c ^ (seed >>> 19)) & 0xffffffff;
+  seed = (seed + 0x165667b1 + (seed << 5)) & 0xffffffff;
+  seed = ((seed + 0xd3a2646c) ^ (seed << 9)) & 0xffffffff;
+  seed = (seed + 0xfd7046c5 + (seed << 3)) & 0xffffffff;
+  seed = (seed ^ 0xb55a4f09 ^ (seed >>> 16)) & 0xffffffff;
+  seed = (seed & 0xfffffff) / 0x10000000;
+  seed = seed * (max - min) + min + 1;
+  return seed;
+};
 
 async function getImages(address) {
   let svgs = [];
