@@ -71,7 +71,7 @@ async function getTopHolders() {
   return holders;
 }
 
-console.log(await getTopHolders())
+console.log(getTopHolders())
 
 async function getImages(address) {
   let svgs = [];
