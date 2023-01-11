@@ -9,6 +9,7 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  touch-action: none;
 }
 
 .button {
