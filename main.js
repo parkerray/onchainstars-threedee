@@ -24,7 +24,10 @@ holdersWrapper.addEventListener("mouseleave", () => {
 holdersWrapper.addEventListener("touchend", () => {
   holdersList.setAttribute('style', 'display: block')
 });
-document.addEventListener('touchcancel')
+
+document.addEventListener('touchend', () => {
+  holdersList.setAttribute('style', 'display: none')
+});
 
 refreshButton.addEventListener('click', handleButton);
 
