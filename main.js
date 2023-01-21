@@ -7,7 +7,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 const ownerInput = document.querySelector('.owner-input');
 const refreshButton = document.querySelector('.button');
 const urlParams = new URLSearchParams(window.location.search);
-const canvas = document.querySelector(".canvas");
+const canvas = document.querySelector(".webgl");
 let currentUrl = new URL(window.location);
 
 const holdersList = document.querySelector('#holders');
