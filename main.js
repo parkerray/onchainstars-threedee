@@ -13,7 +13,7 @@ const holdersList = document.querySelector('#holders');
 const holdersWrapper = document.querySelector('.top-wrapper');
 
 //desktop listeners
-holdersWrapper.addEventListener("mouseenter", () => {
+holdersWrapper.addEventListener("onhover", () => {
   holdersList.setAttribute('style', 'display: block')
 });
 holdersWrapper.addEventListener("mouseleave", () => {
@@ -21,7 +21,7 @@ holdersWrapper.addEventListener("mouseleave", () => {
 });
 
 //touchscreen listeners
-holdersWrapper.addEventListener("touch", () => {
+holdersWrapper.addEventListener("touchend", () => {
   holdersList.setAttribute('style', 'display: block')
 });
 
