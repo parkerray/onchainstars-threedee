@@ -11,11 +11,18 @@ let currentUrl = new URL(window.location);
 
 const holdersList = document.querySelector('#holders');
 const holdersWrapper = document.querySelector('.top-wrapper');
+
+//desktop listeners
 holdersWrapper.addEventListener("mouseenter", () => {
   holdersList.setAttribute('style', 'display: block')
 });
 holdersWrapper.addEventListener("mouseleave", () => {
   holdersList.setAttribute('style', 'display: none')
+});
+
+//touchscreen listeners
+holdersWrapper.addEventListener("touch", () => {
+  holdersList.setAttribute('style', 'display: block')
 });
 
 refreshButton.addEventListener('click', handleButton);

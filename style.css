@@ -90,3 +90,7 @@ li {
   padding: 2px;
   cursor: pointer;
 }
+
+li:hover {
+  color:rgb(0, 86, 235);
+}
