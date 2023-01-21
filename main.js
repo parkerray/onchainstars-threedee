@@ -14,7 +14,7 @@ const holdersList = document.querySelector('#holders');
 const holdersWrapper = document.querySelector('.top-wrapper');
 
 //desktop listeners
-holdersWrapper.addEventListener("onhover", () => {
+holdersWrapper.addEventListener("mouseenter", () => {
   holdersList.setAttribute('style', 'display: block')
 });
 holdersWrapper.addEventListener("mouseleave", () => {
