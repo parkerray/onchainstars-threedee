@@ -7,6 +7,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 const ownerInput = document.querySelector('.owner-input');
 const refreshButton = document.querySelector('.button');
 const urlParams = new URLSearchParams(window.location.search);
+const canvas = document.querySelector(".canvas");
 let currentUrl = new URL(window.location);
 
 const holdersList = document.querySelector('#holders');
@@ -24,8 +25,10 @@ holdersWrapper.addEventListener("mouseleave", () => {
 holdersWrapper.addEventListener("touchend", () => {
   holdersList.setAttribute('style', 'display: block')
 });
-
-document.addEventListener('touchend', () => {
+canvas.addEventListener('touchend', () => {
+  holdersList.setAttribute('style', 'display: none')
+});
+ownerInput.addEventListener('touchend', () => {
   holdersList.setAttribute('style', 'display: none')
 });
 
