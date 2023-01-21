@@ -25,7 +25,7 @@ function handleButton() {
 async function getTopHolders() {
 
   let holders = [];
-  const response = await fetch(`https://api.onchainstars.com/api:public/top-holders`, {
+  const response = await fetch(`https://main.api314.com/api:public/top-holders`, {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   });
@@ -75,7 +75,7 @@ const getPosition = (token, i, min, max) => {
 
 async function getImages(address) {
   let svgs = [];
-  const response = await fetch(`https://api.onchainstars.com/api:public/owned-constellations?owner=${address}`, {
+  const response = await fetch(`https://main.api314.com/api:public/owned-constellations?owner=${address}`, {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   });
