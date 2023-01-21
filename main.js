@@ -24,10 +24,12 @@ holdersWrapper.addEventListener("mouseleave", () => {
 holdersWrapper.addEventListener("touchend", () => {
   holdersList.setAttribute('style', 'display: block')
 });
+document.addEventListener('touchcancel')
 
 refreshButton.addEventListener('click', handleButton);
 
 function handleButton() {
+  holdersList.setAttribute('style', 'display: none')
   const url = new URL(window.location);
   url.searchParams.set('address',ownerInput.value)
   window.history.pushState({},'',url)
