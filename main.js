@@ -137,8 +137,8 @@ async function handleFunctions(svgs) {
 
   //sizes
   let sizes = {
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: window.innerWidth - 32,
+    height: window.innerHeight - 32,
   };
 
   let xInit = 32;
