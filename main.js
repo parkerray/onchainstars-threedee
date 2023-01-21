@@ -9,6 +9,15 @@ const refreshButton = document.querySelector('.button');
 const urlParams = new URLSearchParams(window.location.search);
 let currentUrl = new URL(window.location);
 
+const holdersList = document.querySelector('#holders');
+const holdersWrapper = document.querySelector('.top-wrapper');
+holdersWrapper.addEventListener("mouseenter", () => {
+  holdersList.setAttribute('style', 'display: block')
+});
+holdersWrapper.addEventListener("mouseleave", () => {
+  holdersList.setAttribute('style', 'display: none')
+});
+
 refreshButton.addEventListener('click', handleButton);
 
 function handleButton() {
@@ -33,6 +42,9 @@ async function getTopHolders() {
 
   const items = data.map(item => item);
 
+  holdersList.innerHTML = "";
+
+
   items.forEach(item => {
     let address = item.constellations_owner;
     let holder = {
@@ -41,6 +53,14 @@ async function getTopHolders() {
       "tokenCount": item.tokens
     }
     holders.push(holder)
+    const holderItem = document.createElement('li');
+    holderItem.innerHTML = `${holder.label}: ${holder.tokenCount}`
+    holderItem.setAttribute('id', holder.address);
+    holderItem.addEventListener("click", function(event) {
+      ownerInput.value = holderItem.id;
+      handleButton();
+    })
+    holdersList.appendChild(holderItem)
   });
   return holders;
 }
@@ -54,7 +74,6 @@ async function initialize() {
   }
   getSvgs(address)
   const holders = await getTopHolders();
-  console.log(holders)
 }
 
 initialize();
