@@ -49,7 +49,7 @@ function handleButton() {
 async function getTopHolders() {
 
   let holders = [];
-  const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/api:public/top-holders`, {
+  const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/top-holders`, {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   });
