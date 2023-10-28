@@ -49,7 +49,7 @@ function handleButton() {
 async function getTopHolders() {
 
   let holders = [];
-  const response = await fetch(`https://main.api314.com/api:public/top-holders`, {
+  const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/api:public/top-holders`, {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   });
@@ -109,7 +109,7 @@ const getPosition = (token, i, min, max) => {
 
 async function getImages(address) {
   let svgs = [];
-  const response = await fetch(`https://main.api314.com/api:public/owned-constellations?owner=${address}`, {
+  const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/owned-constellations?owner=${address}`, {
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   });
