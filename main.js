@@ -4,91 +4,90 @@ import "./style.css";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 //import { ENS } from '@ensdomains/ensjs'
 
-const ownerInput = document.querySelector('.owner-input');
-const refreshButton = document.querySelector('.button');
+const ownerInput = document.querySelector(".owner-input");
+const refreshButton = document.querySelector(".button");
 const urlParams = new URLSearchParams(window.location.search);
 const canvas = document.querySelector(".webgl");
 let currentUrl = new URL(window.location);
 
-const holdersList = document.querySelector('#holders');
-const holdersWrapper = document.querySelector('.top-wrapper');
+// const holdersList = document.querySelector('#holders');
+// const holdersWrapper = document.querySelector('.top-wrapper');
 
-//desktop listeners
-holdersWrapper.addEventListener("mouseenter", () => {
-  holdersList.setAttribute('style', 'display: block')
-});
-holdersWrapper.addEventListener("mouseleave", () => {
-  holdersList.setAttribute('style', 'display: none')
-});
+// //desktop listeners
+// holdersWrapper.addEventListener("mouseenter", () => {
+//   holdersList.setAttribute('style', 'display: block')
+// });
+// holdersWrapper.addEventListener("mouseleave", () => {
+//   holdersList.setAttribute('style', 'display: none')
+// });
 
-//touchscreen listeners
-holdersWrapper.addEventListener("touchend", () => {
-  holdersList.setAttribute('style', 'display: block')
-});
-canvas.addEventListener('touchend', () => {
-  holdersList.setAttribute('style', 'display: none')
-});
-ownerInput.addEventListener('touchend', () => {
-  holdersList.setAttribute('style', 'display: none')
-});
+// //touchscreen listeners
+// holdersWrapper.addEventListener("touchend", () => {
+//   holdersList.setAttribute('style', 'display: block')
+// });
+// canvas.addEventListener('touchend', () => {
+//   holdersList.setAttribute('style', 'display: none')
+// });
+// ownerInput.addEventListener('touchend', () => {
+//   holdersList.setAttribute('style', 'display: none')
+// });
 
-refreshButton.addEventListener('click', handleButton);
+refreshButton.addEventListener("click", handleButton);
 
 function handleButton() {
-  holdersList.setAttribute('style', 'display: none')
+  // holdersList.setAttribute('style', 'display: none')
   const url = new URL(window.location);
-  url.searchParams.set('address',ownerInput.value)
-  window.history.pushState({},'',url)
+  url.searchParams.set("address", ownerInput.value);
+  window.history.pushState({}, "", url);
   if (ownerInput.value) {
     getSvgs(ownerInput.value);
   } else {
-    console.log('something seems wrong with your wallet address')
+    console.log("something seems wrong with your wallet address");
   }
 }
 
-async function getTopHolders() {
+// async function getTopHolders() {
 
-  let holders = [];
-  const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/top-holders`, {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'}
-  });
-  const data = await response.json();
+//   let holders = [];
+//   const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/top-holders`, {
+//     method: 'GET',
+//     headers: {'Content-Type': 'application/json'}
+//   });
+//   const data = await response.json();
 
-  const items = data.map(item => item);
+//   const items = data.map(item => item);
 
-  holdersList.innerHTML = "";
+//   holdersList.innerHTML = "";
 
-
-  items.forEach(item => {
-    let address = item.constellations_owner;
-    let holder = {
-      "address": address,
-      "label": address.substring(0, 6) + "..." + address.substring(address.length - 4),
-      "tokenCount": item.tokens
-    }
-    holders.push(holder)
-    const holderItem = document.createElement('li');
-    holderItem.innerHTML = `${holder.label}: ${holder.tokenCount}`
-    holderItem.setAttribute('id', holder.address);
-    holderItem.addEventListener("click", function(event) {
-      ownerInput.value = holderItem.id;
-      handleButton();
-    })
-    holdersList.appendChild(holderItem)
-  });
-  return holders;
-}
+//   items.forEach(item => {
+//     let address = item.constellations_owner;
+//     let holder = {
+//       "address": address,
+//       "label": address.substring(0, 6) + "..." + address.substring(address.length - 4),
+//       "tokenCount": item.tokens
+//     }
+//     holders.push(holder)
+//     const holderItem = document.createElement('li');
+//     holderItem.innerHTML = `${holder.label}: ${holder.tokenCount}`
+//     holderItem.setAttribute('id', holder.address);
+//     holderItem.addEventListener("click", function(event) {
+//       ownerInput.value = holderItem.id;
+//       handleButton();
+//     })
+//     holdersList.appendChild(holderItem)
+//   });
+//   return holders;
+// }
 
 async function initialize() {
-  let address = urlParams.get('address');
+  let address = urlParams.get("address");
   if (address) {
     ownerInput.value = address;
   } else {
-    address = '0x93da86E4231908179b738E88DD0510F7078a5Cac';
+    address = "0x93da86E4231908179b738E88DD0510F7078a5Cac";
   }
-  getSvgs(address)
-  const holders = await getTopHolders();
+  getSvgs(address);
+  // const holders = await getTopHolders();
 }
 
 initialize();
@@ -109,17 +108,20 @@ const getPosition = (token, i, min, max) => {
 
 async function getImages(address) {
   let svgs = [];
-  const response = await fetch(`https://x7ir-z0dp-z68c.n7.xano.io/api:public/owned-constellations?owner=${address}`, {
-    method: 'GET',
-    headers: {'Content-Type': 'application/json'}
-  });
+  const response = await fetch(
+    `https://x7ir-z0dp-z68c.n7.xano.io/api:public/owned-constellations?owner=${address}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
   const data = await response.json();
 
-  const images = data.map(item => item.metadata.image);
+  const images = data.map((item) => item.metadata.image);
 
-  images.forEach(e => {
-    let svg = atob(e.replace("data:image/svg+xml;base64,", ""))
-    svgs.push(svg)
+  images.forEach((e) => {
+    let svg = atob(e.replace("data:image/svg+xml;base64,", ""));
+    svgs.push(svg);
   });
   return svgs;
 }
